@@ -24,13 +24,13 @@ public class SchedServerService extends IntentService {
      *
      * @param name Used to name the worker thread, important only for debugging.
      */
-    public static String SCHED_ACTION = "SchedServiceAction";
-    public static String GET_EVENTS_ACTION = "SchedServiceGetEvents";
-    public static String GET_EVENT_ACTION = "SchedServiceGetEvent";
+    public static final String SCHED_ACTION = "SchedServiceAction";
+    public static final String GET_EVENTS_ACTION = "SchedServiceGetEvents";
+    public static final String GET_EVENT_ACTION = "SchedServiceGetEvent";
 
-    public static String EVENT_ID = "SchedServiceEventID";
+    public static final String EVENT_ID = "SchedServiceEventID";
 
-    public static String RECEIVER = "SchedResultReceiver";
+    public static final String RECEIVER = "SchedResultReceiver";
 
     private SchedResultReceiver resultReceiver;
 
@@ -38,12 +38,31 @@ public class SchedServerService extends IntentService {
         super(name);
     }
 
+    private int resultCode;
+
+
+
     @Override
-    protected void onHandleIntent(@Nullable Intent intent) {
+    protected void onHandleIntent(@Nullable final Intent intent) {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
+        resultCode = -1;
         String url = "Osoite";
+        resultReceiver = intent.getParcelableExtra(RECEIVER);
+
+        switch (intent.getStringExtra(SCHED_ACTION)) {
+            case GET_EVENT_ACTION:
+                String eventID = intent.getStringExtra(EVENT_ID);
+
+                //Build Restful api request here
+                resultCode = 1;
+                break;
+            case GET_EVENTS_ACTION:
+
+                resultCode = 0;
+                break;
+        }
 
 
         //Tähän intentin käsittely ja URL:n muokkaaminen sen mukaan
@@ -53,6 +72,9 @@ public class SchedServerService extends IntentService {
                     @Override
                     public void onResponse(JSONObject response) {
 
+                        Bundle results = new Bundle();
+                        results.putString("response", response.toString());
+                        resultReceiver.send(resultCode, results);
 
                     }
                 },
