@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\Hannes\.android\build-cache\44e6348e8603725e0b89a17faa47fea7057b1293\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="E:\Hannes\Documents\Projects\Android\SchedStuff\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_03f2c8f47171442af5748896d6f8b749059d23f9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Hannes\.android\build-cache\01f67ff71b123a347a0a997f096454b9469c4537\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="E:\Hannes\Documents\Projects\Android\SchedStuff\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_1244531a79b70f3003c673a7245f6fd57552ed8f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\Hannes\Documents\Projects\Android\SchedStuff\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0a50f945be7a31dce8c4b3869c42afbb5d886546">
+        <dex dex="E:\Hannes\Documents\Projects\Android\SchedStuff\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_4b4c3a85463da6b7ee253d53646699cc8c6569e8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Hannes\.android\build-cache\d06698c8af518f71e8c199edbb6ca04c15f8f61a\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="E:\Hannes\Documents\Projects\Android\SchedStuff\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c2db23df1253285f1e53ddebb1541ad89f583d1a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Hannes\.android\build-cache\71c8b765b61801d0780cd69ef02197957f005559\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="E:\Hannes\Documents\Projects\Android\SchedStuff\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_676cbca215ceb9c19e3dd4d74809bdbdfa13a3ca\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Hannes\.android\build-cache\12698607ce30dd4f3e9a78fe1242089dfd9f8b6b\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="E:\Hannes\Documents\Projects\Android\SchedStuff\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d99f867739a4617b2bbe601b612e46c4b9da9552\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Hannes\.android\build-cache\8ccfecf65dbf504c0b41cf7209e7bb802de935cd\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="E:\Hannes\Documents\Projects\Android\SchedStuff\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_cc580bbaf5e2f0435b30df453f58c295e18aff4e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Hannes\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="E:\Hannes\Documents\Projects\Android\SchedStuff\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.3.1_df40a10a55a7e5e36542c3b23fcff4c9cd00ca00\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Hannes\.android\build-cache\66cb63c5a6d6c80e7512ec7f43e597546cdd11be\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="E:\Hannes\Documents\Projects\Android\SchedStuff\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_95380d8e73830a9342e1ad4e4039cf33ebadebda\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Hannes\.android\build-cache\50a979fb371dd1fa1f572effa0075304696d666b\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="E:\Hannes\Documents\Projects\Android\SchedStuff\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5e8a267e867905dd1c581b4944ad33527e905e88\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\Hannes\Documents\Projects\Android\SchedStuff\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="E:\Hannes\Documents\Projects\Android\SchedStuff\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_5716ca70f615b7257d1b80dc86beb32ca0205775\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Hannes\.android\build-cache\557c9ef20bb47c6784aaabd4efe0b3cef4f736b4\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="E:\Hannes\Documents\Projects\Android\SchedStuff\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_1e34fee404960443d3254b8c9e5af60d21166861\classes.dex" />
+    </item>
+
+</items>
