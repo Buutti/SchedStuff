@@ -1,14 +1,21 @@
 from rest_framework import serializers
 from . import models
+from django.contrib.auth.models import User, Group
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = models.User
-        fields = ('identifier', 'name')
+        model = User
+        fields = ('url', 'username', 'email', 'groups')
+
+
+class GroupSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Group
+        fields = ('url', 'name')
 
 
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Event
-        fields = ('identifier', 'name', 'locked', 'deadline', 'possible_times', 'date', 'length', 'participants')
+        fields = ('identifier', 'name', 'locked', 'deadline', 'possible_times', 'date', 'length', 'organizer')

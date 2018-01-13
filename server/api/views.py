@@ -1,13 +1,16 @@
-from rest_framework import generics
+from rest_framework import generics, viewsets
 from . import serializers, models
+from django.contrib.auth.models import User, Group
 
 
-class CreateUserView(generics.ListCreateAPIView):
-    queryset = models.User.objects.all()
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
     serializer_class = serializers.UserSerializer
 
-    def perform_create(self, serializer):
-        serializer.save()
+
+class GroupViewSet(viewsets.ModelViewSet):
+    queryset = Group.objects.all()
+    serializer_class = serializers.GroupSerializer
 
 
 class CreateEventView(generics.ListCreateAPIView):
@@ -16,11 +19,6 @@ class CreateEventView(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save()
-
-
-class UserDetailsView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = models.User.objects.all()
-    serializer_class = serializers.UserSerializer
 
 
 class EventDetailsView(generics.RetrieveUpdateDestroyAPIView):

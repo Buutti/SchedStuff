@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -59,29 +60,59 @@ public class MainActivity extends AppCompatActivity implements SchedResultReceiv
         //resultCode: 0 = receiving list of event IDs
         //            1 = receiving full info of event
 
-        JSONObject resultJSON = null;
-        try {
-            resultJSON = new JSONObject(resultData.getString("response"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        JSONObject resultJSON;
+        JSONArray resultJSONArray;
+
 
         if (resultCode == 0) {
 
+            try {
+                resultJSONArray = new JSONArray(resultData.getString("response"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return;
+            }
+
+            StringBuilder eventIDList = new StringBuilder();
+            for (int i = 0; i < resultJSONArray.length(); i++) {
+                try {
+                    JSONObject event = resultJSONArray.getJSONObject(i);
+                    int eventID = event.getInt("identifier");
+                    eventIDList.append(Integer.toString(eventID));
+                    if (i < resultJSONArray.length() -1) {
+                        eventIDList.append(", ");
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            eventIDTextView.setText(eventIDList);
+
+
         }
         else if (resultCode == 1) {
-            String[] jsonKeys = {"name", "deadline", "participants", "date"};
-            String eventText = "";
+
+            try {
+                resultJSON = new JSONObject(resultData.getString("response"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return;
+            }
+
+
+            String[] jsonKeys = {"name", "deadline", "date", "length", "organizer"};
+            StringBuilder eventText = new StringBuilder();
 
             for (String key : jsonKeys) {
 
                 try {
-                    eventText += resultJSON.getString(key);
+                    eventText.append("\n").append(key).append(resultJSON.getString(key));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
 
+            eventInfoTextView.setText(eventText);
         }
     }
 }

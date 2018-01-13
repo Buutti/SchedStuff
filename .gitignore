@@ -1,8 +1,22 @@
 *.iml
-.gradle
+/client/.gradle
 /local.properties
-/.idea
+/client/.idea
 .DS_Store
 /build
 /captures
 .externalNativeBuild
+
+
+# User-specific stuff:
+server/.idea/**/workspace.xml
+server/.idea/**/tasks.xml
+
+# Sensitive or high-churn files:
+server/.idea/**/dataSources/
+server/.idea/**/dataSources.ids
+server/.idea/**/dataSources.xml
+server/.idea/**/dataSources.local.xml
+server/.idea/**/sqlDataSources.xml
+server/.idea/**/dynamic.xml
+server/.idea/**/uiDesigner.xml
