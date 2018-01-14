@@ -115,4 +115,9 @@ public class MainActivity extends AppCompatActivity implements SchedResultReceiv
             eventInfoTextView.setText(eventText);
         }
     }
+
+    public void createEvent(View view) {
+        Intent intent = new Intent(this, CreateEventActivity.class);
+        startActivity(intent);
+    }
 }
