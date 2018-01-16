@@ -22,10 +22,15 @@ import java.util.Date;
 
 public class CreateEventActivity extends AppCompatActivity {
 
-    EditText deadlineEditText, beginAfterEditText, beginBeforeEditText;
+    EditText deadlineEditText, decideBeforeEditText,
+            beginAfterEditText, beginBeforeEditText;
 
+    //Statics for keeping track of which field is chosen
     final static int BEGIN_AFTER = 0;
     final static int BEGIN_BEFORE = 1;
+
+    final static int DEADLINE = 0;
+    final static int DECIDE_BEFORE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +53,15 @@ public class CreateEventActivity extends AppCompatActivity {
         deadlineEditText = (EditText) findViewById(R.id.deadlineEditText);
         deadlineEditText.setOnClickListener(deadlineOnClickListener);
 
+        decideBeforeEditText = (EditText) findViewById(R.id.decideBeforeEditText);
+        decideBeforeEditText.setOnClickListener(decideBeforeOnClickListener);
+
         beginAfterEditText = (EditText) findViewById(R.id.beginAfterEditText);
         beginAfterEditText.setOnClickListener(beginAfterOnClickListener);
 
         beginBeforeEditText = (EditText) findViewById(R.id.beginBeforeEditText);
-        beginBeforeEditText.setOnClickListener(beginBeforeOnClicListener);
+        beginBeforeEditText.setOnClickListener(beginBeforeOnClickListener
+        );
     }
 
     View.OnClickListener deadlineOnClickListener = new View.OnClickListener() {
@@ -60,9 +69,30 @@ public class CreateEventActivity extends AppCompatActivity {
         public void onClick(View v) {
             DialogFragment dialogFragment = new DatePickerFragment();
 
+            Bundle args = new Bundle();
+            args.putInt("field", DEADLINE);
+            dialogFragment.setArguments(args);
+
             dialogFragment.show(getFragmentManager(), "Date Picker");
         }
     };
+
+    View.OnClickListener decideBeforeOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            DialogFragment dialogFragment = new DatePickerFragment();
+
+            Bundle args = new Bundle();
+            args.putInt("field", DECIDE_BEFORE);
+            dialogFragment.setArguments(args);
+
+            dialogFragment.show(getFragmentManager(), "Date Picker");
+
+        }
+    };
+
+
+
 
     View.OnClickListener beginAfterOnClickListener = new View.OnClickListener() {
         @Override
@@ -77,7 +107,7 @@ public class CreateEventActivity extends AppCompatActivity {
         }
     };
 
-    View.OnClickListener beginBeforeOnClicListener = new View.OnClickListener() {
+    View.OnClickListener beginBeforeOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             DialogFragment dialogFragment = new TimePickerFragment();
@@ -89,6 +119,7 @@ public class CreateEventActivity extends AppCompatActivity {
             dialogFragment.show(getFragmentManager(), "Time Picker");
         }
     };
+
 
     /*
         Code for date and time pickers from url
@@ -121,9 +152,19 @@ public class CreateEventActivity extends AppCompatActivity {
             DateFormat dateFormat = DateFormat.getDateInstance();
             String formattedDate = dateFormat.format(chosenDate);
 
-            EditText deadlineText = (EditText) getActivity().findViewById(R.id.deadlineEditText);
-            deadlineText.setText(formattedDate);
+            EditText editText;
+            int field = getArguments().getInt("field");
+            switch (field) {
+                case DEADLINE:
+                    editText = (EditText) getActivity().findViewById(R.id.deadlineEditText);
+                    editText.setText(formattedDate);
+                    break;
+                case BEGIN_BEFORE:
+                    editText = (EditText) getActivity().findViewById(R.id.decideBeforeEditText);
+                    editText.setText(formattedDate);
+                    break;
 
+            }
         }
     }
 

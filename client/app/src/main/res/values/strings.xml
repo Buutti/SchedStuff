@@ -11,5 +11,6 @@
     <string name="event_deadline">Deadline</string>
     <string name="event_start_before">Start before</string>
     <string name="event_begin_after">Begin after</string>
+    <string name="event_decide_before">Decide before</string>
 
 </resources>
