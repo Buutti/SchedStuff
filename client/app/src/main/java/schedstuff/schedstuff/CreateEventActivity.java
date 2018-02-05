@@ -4,7 +4,9 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -15,15 +17,21 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.sql.Time;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 
-public class CreateEventActivity extends AppCompatActivity {
+public class CreateEventActivity extends AppCompatActivity implements SchedResultReceiver.Receiver {
 
-    EditText deadlineEditText, decideBeforeEditText,
+    EditText nameEditText, deadlineEditText, decideBeforeEditText,
             beginAfterEditText, beginBeforeEditText;
+
+    SchedResultReceiver resultReceiver;
 
     //Statics for keeping track of which field is chosen
     final static int BEGIN_AFTER = 0;
@@ -48,6 +56,11 @@ public class CreateEventActivity extends AppCompatActivity {
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        resultReceiver = new SchedResultReceiver(new Handler());
+        resultReceiver.setReceiver(this);
+
+        nameEditText = (EditText) findViewById(R.id.nameEditText);
 
         // Code for setting dates is from url https://stackoverflow.com/questions/11360915/how-to-set-date-in-edit-text
         deadlineEditText = (EditText) findViewById(R.id.deadlineEditText);
@@ -119,6 +132,50 @@ public class CreateEventActivity extends AppCompatActivity {
             dialogFragment.show(getFragmentManager(), "Time Picker");
         }
     };
+
+    public void sendEventClicked(View view) {
+        Intent mServiceIntent = new Intent(this, SchedServerService.class);
+        mServiceIntent.putExtra(SchedServerService.RECEIVER, resultReceiver);
+        mServiceIntent.putExtra(SchedServerService.SCHED_ACTION, SchedServerService.POST_EVENT_ACTION);
+
+        startService(mServiceIntent);
+    }
+
+    private void parsePOSTRequest() {
+        JSONObject eventJson = new JSONObject();
+        try {
+            eventJson.put("name", nameEditText.getText().toString());
+            eventJson.put("deadline", parseDateToString(deadlineEditText));
+            eventJson.put("decideBefore", parseDateToString(decideBeforeEditText));
+            eventJson.put("beginBefore", parseDateToString(beginBeforeEditText));
+            eventJson.put("beginAfter", parseDateToString(beginAfterEditText));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+
+    }
+
+    private String parseDateToString(EditText dateEditText) {
+        DateFormat dateFormat = DateFormat.getDateInstance();
+        try {
+             Date date = dateFormat.parse(dateEditText.getText().toString());
+             // TODO: Change format to form accepted by server
+             String dateString = dateFormat.format(date);
+             return dateString;
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
+    @Override
+    public void onReceiveResult(int resultCode, Bundle resultData) {
+
+    }
 
 
     /*
