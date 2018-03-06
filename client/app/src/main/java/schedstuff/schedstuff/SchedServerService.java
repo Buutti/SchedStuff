@@ -29,6 +29,7 @@ public class SchedServerService extends IntentService {
     public static final String SCHED_ACTION = "SchedServiceAction";
     public static final String GET_EVENTS_ACTION = "SchedServiceGetEvents";
     public static final String GET_EVENT_ACTION = "SchedServiceGetEvent";
+    public static final String POST_EVENT_ACTION = "SchedServicePostEvent";
 
     public static final String EVENT_ID = "SchedServiceEventID";
 
