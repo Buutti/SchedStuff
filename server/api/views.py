@@ -1,26 +1,32 @@
-from rest_framework import generics, viewsets
+from rest_framework import viewsets, permissions
 from . import serializers, models
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User
+from api.permissions import IsOwnerOrReadOnly
 
 
-class UserViewSet(viewsets.ModelViewSet):
+class UserViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = User.objects.all()
     serializer_class = serializers.UserSerializer
 
 
-class GroupViewSet(viewsets.ModelViewSet):
-    queryset = Group.objects.all()
-    serializer_class = serializers.GroupSerializer
+class EventViewSet(viewsets.ModelViewSet):
+    """
+    This viewset automatically provides 'list', 'create', 'retrieve', 'update' and 'destroy' actions.
+    """
 
-
-class CreateEventView(generics.ListCreateAPIView):
     queryset = models.Event.objects.all()
     serializer_class = serializers.EventSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly)
 
     def perform_create(self, serializer):
-        serializer.save()
+        serializer.save(organizer=self.request.user)
 
 
-class EventDetailsView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = models.Event.objects.all()
-    serializer_class = serializers.EventSerializer
+class PossibleDateViewSet(viewsets.ModelViewSet):
+    """
+    This viewset automatically provides 'list', 'create', 'retrieve', 'update' and 'destroy' actions.
+    """
+
+    queryset = models.PossibleDate.objects.all()
+    serializer_class = serializers.PossibleTimeSerializer
+
